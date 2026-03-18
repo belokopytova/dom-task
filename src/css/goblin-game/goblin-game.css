@@ -1,0 +1,23 @@
+
+.goblin-game {
+  display: grid;
+  grid-template-columns: repeat(4, 120px); 
+  grid-gap: 3px;
+  width: calc(4 * 120px + 3 * 3px); 
+  height: calc(4 * 120px + 3 * 3px); 
+}
+
+.cell {
+  background-color: #f6f5e0;
+  border: 1px solid #7d1b17;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cell-active {
+  background-image: url("../../img/goblin.png");
+  background-repeat: no-repeat;   
+  background-position: center;       
+  background-size: contain;  
+}
