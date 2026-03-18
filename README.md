@@ -1,3 +1,5 @@
+[![Dom-task](https://github.com/belokopytova/dom-task/actions/workflows/web.yml/badge.svg)](https://github.com/belokopytova/dom-task/actions/workflows/web.yml)
+
 # Webpack5
 
 [Руководство по настройке Webpack](https://webpack.js.org/guides/)
