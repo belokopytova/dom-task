@@ -1,3 +1,5 @@
+const NUM_OF_CELLS = 16;
+
 export default class GoblinGame {
   constructor(element) {
     this.element = element;
@@ -5,40 +7,35 @@ export default class GoblinGame {
     this.goblinInterval = null;
   }
 
-  addTiles(count = 16) {
+  addCells(count = NUM_OF_CELLS) {
     this.cells = Array.from({ length: count }, () => {
       const cell = document.createElement("div");
       cell.classList.add("cell");
-      this.element.appendChild(cell);
+      this.element.append(cell);
       return cell;
     });
   }
 
   clearActive() {
-    this.cells.forEach((tile) => tile.classList.remove("cell-active"));
+    this.cells.forEach((cell) => cell.classList.remove("cell-active"));
   }
 
   addGoblin() {
-    // const inactiveTiles = this.cells.filter(
-    //   (cell) => !cell.classList.contains("cell-active")
-    // );
-
-    // const currentActive = this.cells.find((t) => t.classList.contains("cell-active"));
-    // let nextTile;
-
-    // do {
-    //   nextTile = inactiveTiles[Math.floor(Math.random() * inactiveTiles.length)];
-    // } while (currentActive && nextTile === currentActive);
-
-    // this.clearActive();
-    // nextTile.classList.add("cell-active");
     this.clearActive();
-    const nextTile = this.cells[Math.floor(Math.random() * this.cells.length)];
-    nextTile.classList.add("cell-active");
+
+    let nextCell = Math.floor(Math.random() * this.cells.length);
+
+    if (this.cells.length > 1) {
+      while (nextCell === this.currentCell) {
+        nextCell = Math.floor(Math.random() * this.cells.length);
+      }
+    }
+    this.currentCell = nextCell;
+    this.cells[nextCell].classList.add("cell-active");
   }
 
   startGame() {
-    this.addTiles();
+    this.addCells();
     this.goblinInterval = setInterval(() => this.addGoblin(), 1500);
   }
 
